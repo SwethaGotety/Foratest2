@@ -31,16 +31,21 @@ describe('Fora', () => {
               headers: { Authorization: `Bearer ${access_token}` },
             }).then( response  => {
               
+                cy.visit("https://admin.forastaging.net/"),
+                cy.contains('Sign in with Fora Google').click()
+
                 cy.log(response.body),
-                userId = response.body.email,
+                userId = response.body.username,
                 cy.log("user id "+ userId)
                 cy.request({
                     method: 'POST',
-                    url : 'http://admin.forastaging.net/',
+                    //url : 'https://accounts.google.com/api'+userId+'/users',
+                    url : 'https://accounts.google.com/o/oauth2/auth/identifier?client_id=',
                     //url: 'https://www.googleapis.com/userinfo/v2/me',
                     headers: { Authorization: `Bearer ${access_token}` },
                 })
-                cy.visit("/")
+                cy.visit('/')
+
               
               /* window.localStorage.setItem('googleCypress', JSON.stringify(userItem))
               expect(localStorage.getItem('googleCypress')).not.null

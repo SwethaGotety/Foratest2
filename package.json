@@ -10,5 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "cypress": "^12.10.0"
+  },
+  "dependencies": {
+    "googleapis": "^118.0.0"
   }
 }
